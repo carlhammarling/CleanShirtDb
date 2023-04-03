@@ -41,9 +41,14 @@ exports.getOneProduct = (req, res) => {
     const id = req.params.id
     Product.findById(id)
         
-        .then(data => res.status(200).json(data))
+        .then(data => {
+            if(!data) {
+                return res.status(404).json({ message: 'Could not find any product with this id.' })
+            }
+            res.status(201).json(data)
+            })          
         .catch(() => res.status(404).json({
-            message: 'Could not get the product'
+            message: 'Something went wrong while getting the product.'
         }))
 }
 
@@ -55,9 +60,14 @@ exports.putProduct = (req, res) => {
     const id = req.params.id
 
     Product.findByIdAndUpdate(id, { name, description, price, imgURL, category }, { new: true })
-        .then(data => res.status(201).json(data))
+        .then(data => {
+            if(!data) {
+                return res.status(404).json({ message: 'Could not find any product with this id' })
+            }
+            res.status(201).json(data)
+            })
         .catch(() => ({
-            message: 'Could not update product'
+            message: 'Somthing went wrong while trying to update the product'
         }))
 }
 
@@ -68,7 +78,12 @@ exports.deleteProduct = (req, res) => {
     const id = req.params.id
 
     Product.findByIdAndDelete(id)
-        .then(data => res.status(200).json({ message: 'Product with id: ' + id + ' was succefully deleted'}))
-        .catch(() => res.status(400).json({ message: 'Could not delete'}))
+        .then(data => {
+            if(!data) {
+                return res.status(404).json({ message: 'Could not find any product with this id.' })
+            }
+            res.status(200).json({ message: 'Product with id: ' + id + ' was succefully deleted.'})
+            })
+        .catch(() => res.status(400).json({ message: 'Could not delete the product.'}))
 
 }
