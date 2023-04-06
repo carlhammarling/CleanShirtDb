@@ -30,5 +30,22 @@ exports.postCart = (req, res) => {
 
 
 //GET - BY TOKEN
+//Hämtar alla på den som är inloggad
+exports.getCart = (req, res) => {
+    const userId = req.userId
+
+    Cart.find({ userId })
+    .populate({
+        path: 'orderLine.product',
+        select: 'name price'
+      })
+      .populate({
+        path: 'userId',
+        select: 'email'
+      })
+    .exec()
+    .then(data => res.status(200).json(data))
+    .catch(() => res.status(404).json({ message: 'Could not find order' }))
+}
 
 
