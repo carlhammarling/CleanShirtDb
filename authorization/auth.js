@@ -11,7 +11,8 @@ exports.generateToken = (user) => {
 exports.verifyToken = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1]
-        userId = jwt.verify(token, secretKey)._id
+        //Den här ger tillbaka oss ett objekt, och vi tar ut _id ur det.
+        req.userId = jwt.verify(token, secretKey)._id
 
         next()
     } catch {

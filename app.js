@@ -10,6 +10,7 @@ app.use(cors())
 app.use(express.static(__dirname + '/public'))
 app.use('/api/products', require('./controllers/productsController'))
 app.use('/api/users', require('./controllers/userController'))
+app.use('/api/cart', require('./controllers/cartController'))
 
 
 module.exports = app;
