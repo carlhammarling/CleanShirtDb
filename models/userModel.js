@@ -77,9 +77,8 @@ exports.loginUser = async (req, res) => {
 
 exports.getAllUsers = (req, res) => {
     User.find()
-        .populate('shoppingCart')
-        .populate('shoppingCart.orderLine.product')
-        .exec()
+        // .populate('shoppingCart')
+        // .exec()
         .then(data => res.status(200).json(data))
         .catch(() => res.status(400).json({ message: 'Could not get users.' }))
 }
@@ -90,8 +89,8 @@ exports.getAllUsers = (req, res) => {
 exports.getOneUser = (req, res) => {
     const id = req.params.id
     User.findById(id)
-        .populate('shoppingCart')
-        .populate('shoppingCart.orderLine.product')
+        // .populate({ path: 'shoppingCart', select: 'orderLine'})
+        .populate({ path: 'shoppingCart', select: 'userId orderLine' })
         .exec()
         .then(data => {
             if(!data) {

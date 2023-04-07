@@ -31,7 +31,7 @@ exports.postCart = (req, res) => {
 
 //GET - BY TOKEN
 //Hämtar alla på den som är inloggad
-exports.getCart = (req, res) => {
+exports.getUserCart = (req, res) => {
     const userId = req.userId
 
     Cart.find({ userId })
@@ -45,7 +45,51 @@ exports.getCart = (req, res) => {
       })
     .exec()
     .then(data => res.status(200).json(data))
-    .catch(() => res.status(404).json({ message: 'Could not find order' }))
+    .catch(() => res.status(404).json({ message: 'Could not find any orders for this user' }))
 }
+
+
+//GET - One by ID - fixa admin
+exports.getOneOrder = (req, res) => {
+    const id = req.params.id
+
+    Cart.findById(id)
+    .populate({
+        path: 'orderLine.product userId',
+        select: 'name price description email'
+    })
+    .exec()
+    .then(data => res.status(200).json(data))
+    .catch(() => res.status(404).json({ message: 'Could not find order.'}))
+}
+
+
+//Delete - med save på user
+
+exports.deleteCart = async (req, res) => {
+    const id = req.params.id
+
+    try {
+        const cart = await Cart.findById(id)
+        if(!cart) {
+            return res.status(404).json({ message: 'Could not find any cart with this id.' })
+        }
+        const userId = cart.userId
+        await User.findByIdAndUpdate(userId, { $pull: { shoppingCart: id }}, { new: true })
+        await Cart.findByIdAndDelete(id)
+        res.status(200).json({ message: 'Cart with id:' + id + 'was removed from database and user with id + ' + userId})
+
+        // await cart.remove()
+
+    } catch {
+        res.status(404).json({ message: 'Could not delete cart.'})
+    }
+}
+
+
+
+
+
+
 
 
