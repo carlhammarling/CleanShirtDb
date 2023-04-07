@@ -19,3 +19,14 @@ exports.verifyToken = (req, res, next) => {
         return res.status(401).json({ message: 'Please login.'})
     }
 }
+
+const admins = ['64302f1713a5a343ffe34988']
+//req.userId kommer från verifyToken
+exports.checkAdmin = (req, res, next) => {
+    if(admins.includes(req.userId)) {
+        next()
+    }
+    else {
+        return res.status(401).json({ message: 'You need be an admin to have access to this.'})
+    }
+}

@@ -48,6 +48,23 @@ exports.getUserCart = (req, res) => {
     .catch(() => res.status(404).json({ message: 'Could not find any orders for this user' }))
 }
 
+ //jämför params med userId i ordern
+exports.getCustomerCart = (req, res) => {
+    const userId = req.params.id
+   
+    Cart.find({ userId })
+    .populate({
+        path: 'orderLine.product',
+        select: 'name price'
+      })
+      .populate({
+        path: 'userId',
+        select: 'email'
+      })
+    .exec()
+    .then(data => res.status(200).json(data))
+    .catch(() => res.status(404).json({ message: 'Could not find any orders for this user' }))
+}
 
 //GET - One by ID - fixa admin
 exports.getOneOrder = (req, res) => {

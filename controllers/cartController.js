@@ -9,11 +9,13 @@ router.post('/', auth.verifyToken, cartModel.postCart)
 //- Hämtar ordrar kopplade till den användaren som är inloggad
 router.get('/', auth.verifyToken, cartModel.getUserCart)
 
-//Hämtar på ordernummer - fixa så admin bara kan nå detta?
-router.get('/:id', auth.verifyToken, cartModel.getOneOrder)
+//Hämtar på ordernummer - bara tillgängligt för admin.
+router.get('/:id', auth.verifyToken, auth.checkAdmin ,cartModel.getOneOrder)
 
+router.get('/customer/:id', auth.verifyToken, auth.checkAdmin, cartModel.getCustomerCart)
 
-router.delete('/:id', cartModel.deleteCart)
+//Deletea en order, bara tillgängligt för admin.
+router.delete('/:id', auth.verifyToken, auth.checkAdmin ,cartModel.deleteCart)
 
 
 

@@ -4,17 +4,17 @@ const auth = require('../authorization/auth')
 
 
 //POST
-router.post('/', auth.verifyToken, productsModel.postProduct)
+router.post('/', auth.verifyToken, auth.checkAdmin, productsModel.postProduct)
 
 //GET
 router.get('/', productsModel.getAllProducts)
 router.get('/:id', productsModel.getOneProduct)
 
 //PUT
-router.put('/:id', auth.verifyToken, productsModel.putProduct)
+router.put('/:id', auth.verifyToken, auth.checkAdmin, productsModel.putProduct)
 
 //DELETE
-router.delete('/:id', auth.verifyToken, productsModel.deleteProduct)
+router.delete('/:id', auth.verifyToken, auth.checkAdmin, productsModel.deleteProduct)
 
 
 module.exports = router;

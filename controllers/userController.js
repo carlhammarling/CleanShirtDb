@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const userModel = require('../models/userModel')
-const { verifyToken } = require('../authorization/auth')
+const { verifyToken, checkAdmin } = require('../authorization/auth')
 
 //POST
 router.post('/add', userModel.postUser)
@@ -10,8 +10,8 @@ router.post('/login', userModel.loginUser)
 router.get('/', userModel.getAllUsers)
 router.get('/:id', userModel.getOneUser)
 
-//DELETE
-router.delete('/:id', verifyToken, userModel.deleteUser)
+//DELETE - bara tillgängligt för admin
+router.delete('/:id', verifyToken, checkAdmin ,userModel.deleteUser)
 
 
 
