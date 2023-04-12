@@ -50,6 +50,7 @@
             li {
                 @include flex(row, center, center);
                 padding-right: 15px;
+                position: relative;
             }
             a {
                 color: white;
@@ -64,6 +65,22 @@
                 @media (max-width: 358px) {
                     display: none;
                 }
+            }
+            span {
+                @include flex(row, center, center);
+                background-color: white;
+                position: absolute;
+                color: $darkGrey;
+                width: 16px;
+                height: 16px;
+                text-align: center;
+                border-radius: 1rem;
+                font-size: 10px;
+                left: 15px;
+                top: 8px;
+            }
+            .d-none { 
+                display: none;
             }
         }
         
@@ -89,4 +106,6 @@
     position: sticky;
     top: 0px;
     // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
 }
+

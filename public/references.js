@@ -1,12 +1,30 @@
 const id = new URLSearchParams(window.location.search).get('id')
 const output = document.querySelector('#output')
+const likesQty = document.querySelector('#likesQty')
+
+const likes = () => {
+    if(shoppingCart.length < 1) {
+        likesQty.classList.add('d-none');
+    }
+    else {
+        likesQty.classList.remove('d-none')
+        likesQty.innerText = shoppingCart.length.toString()
+    }
+}
 
 //Skapar Shoppingcart, hämtar hem om det finns nåt i local storage.
 const shoppingCart = []
-const localCart = JSON.parse(localStorage.getItem('shoppingCart'))
-localCart.forEach(item => shoppingCart.push(item))
-console.log(shoppingCart)
+const getLocalCart = () => {
+    const localCart = JSON.parse(localStorage.getItem('shoppingCart'))
+    if(!localCart) { 
+        return 
+    }
+    localCart.forEach(item => shoppingCart.push(item))
+    likes()
+}
+getLocalCart()
 
+//Get products
 const getOneProduct = async () => {
     const res = await fetch('./api/products/' + id)
     const data = await res.json()
