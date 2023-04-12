@@ -831,6 +831,9 @@ main.references article section {
     margin-top: 0;
   }
 }
+main.references article section .review {
+  margin-top: 1.2rem;
+}
 @media (min-width: 800px) {
   main.references article {
     display: grid;
