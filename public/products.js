@@ -26,7 +26,7 @@ const buildProducts = () => {
         prodCard.className = 'prodCard'
 
         const a = document.createElement('a')
-        a.setAttribute('href', './references.html')
+        a.setAttribute('href', './references.html?id=' + product._id)
 
         const img = document.createElement('img')
         img.setAttribute('src', product.imgURL)
@@ -63,20 +63,3 @@ const buildProducts = () => {
     })
 
 }
-
-
-// <!-- CARDS -->
-            
-//                 <div class="prodCard">
-//                     <a href="./references.html">
-//                         <img src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Clean blue.">                                           
-//                     </a>                   
-//                     <div class="prodBot">
-//                         <h2>CLEAN SHiRT - Clean blue.</h2>                 
-//                         <div class="buy">
-//                             <p>34.99$</p>
-//                              <button class="addBtn">ADD <i class="fa-solid fa-cart-shopping"></i></button>
-//                          </div>
-//                     </div>
-//                 </div>
-

@@ -15,7 +15,7 @@ exports.postProduct = (req, res) => {
         })
     }
 
-    Product.create({ name, description, price, imgURL, category })
+    Product.create({ name, description, price, rating, imgURL, category })
         .then(data => res.status(201).json(data))
         .catch(() => res.status(400).json({ 
             message: 'Something went wrong while creating the product'
@@ -56,10 +56,10 @@ exports.getOneProduct = (req, res) => {
 
 //PUT
 exports.putProduct = (req, res) => {
-    const { name, description, price, imgURL, category } = req.body
+    const { name, description, price, rating, imgURL, category } = req.body
     const id = req.params.id
 
-    Product.findByIdAndUpdate(id, { name, description, price, imgURL, category }, { new: true })
+    Product.findByIdAndUpdate(id, { name, description, price, rating, imgURL, category }, { new: true })
         .then(data => {
             if(!data) {
                 return res.status(404).json({ message: 'Could not find any product with this id' })
