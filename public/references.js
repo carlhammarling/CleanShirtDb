@@ -81,23 +81,3 @@ const listProduct = (data) => {
 
 
 
-
-
-
-
-
-
-
-        // <article>
-        //         <img src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
-        //         <section>
-        //             
-        //             <p>Apparently this one doesn't highlight my features very well, I will keep to suit and tie. Will not buy again.
-        //             </p>
-        //             <br>
-        //             <h4>Bear Grylls <i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i></h4>
-        //             <p>I had a blast grappling with tigers in this outstanding t-shirt! I would definitly recommend it to anyone who isn't afraid
-        //                 to get some dirt on their hands (or shirt), this one LASTS! Mindblowing quality!
-        //             </p>
-        //         </section>                      
-        // </article>
