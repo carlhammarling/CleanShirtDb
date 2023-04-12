@@ -1,6 +1,11 @@
 const id = new URLSearchParams(window.location.search).get('id')
 const output = document.querySelector('#output')
 
+//Skapar Shoppingcart, hämtar hem om det finns nåt i local storage.
+const shoppingCart = []
+const localCart = JSON.parse(localStorage.getItem('shoppingCart'))
+localCart.forEach(item => shoppingCart.push(item))
+console.log(shoppingCart)
 
 const getOneProduct = async () => {
     const res = await fetch('./api/products/' + id)
