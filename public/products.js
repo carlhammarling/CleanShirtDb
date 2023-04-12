@@ -1,7 +1,30 @@
 const prodWrap = document.querySelector('.prodWrap')
+const likesQty = document.querySelector('#likesQty')
 
+const likes = () => {
+    if(shoppingCart.length < 1) {
+        likesQty.classList.add('d-none');
+    }
+    else {
+        likesQty.classList.remove('d-none')
+        likesQty.innerText = shoppingCart.length.toString()
+    }
+}
+
+//Skapar Shoppingcart, hämtar hem om det finns nåt i local storage.
+const shoppingCart = []
+const getLocalCart = () => {
+    const localCart = JSON.parse(localStorage.getItem('shoppingCart'))
+    if(!localCart) { 
+        return 
+    }
+    localCart.forEach(item => shoppingCart.push(item))
+    likes()
+}
+getLocalCart()
 
 const productsArray = []
+
 //GET PRODUCTS
 
 const products = async () => {
@@ -15,18 +38,17 @@ const products = async () => {
 
 products();
 
-console.log(productsArray)
-
 const buildProducts = () => {
     //Tömmer hårdkodat innehåll från produkt-diven.
     // prodWrap.innerHTML = ''
 
     productsArray.forEach(product => {
         const prodCard = document.createElement('div')
+        prodCard.id = product._id
         prodCard.className = 'prodCard'
 
         const a = document.createElement('a')
-        a.setAttribute('href', './references.html?id=' + product._id)
+        a.setAttribute('href', './references.html?id=' + prodCard.id)
 
         const img = document.createElement('img')
         img.setAttribute('src', product.imgURL)
@@ -49,6 +71,13 @@ const buildProducts = () => {
         addBtn.className = 'addBtn'
         //Kolla om man kan göra det här på annat sätt
         addBtn.innerHTML = 'ADD <i class="fa-solid fa-cart-shopping"></i>'
+        addBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            shoppingCart.push(prodCard.id)
+            localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+            likes()
+        })
 
         buy.append(price, addBtn)
 
@@ -63,3 +92,11 @@ const buildProducts = () => {
     })
 
 }
+
+
+
+
+
+
+
+

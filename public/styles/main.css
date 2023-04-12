@@ -180,6 +180,7 @@ header .top .topRight li {
   justify-content: center;
   align-items: center;
   padding-right: 15px;
+  position: relative;
 }
 header .top .topRight a {
   color: white;
@@ -193,6 +194,25 @@ header .top .topRight a:hover {
   header .top .topRight #heart {
     display: none;
   }
+}
+header .top .topRight span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  color: #333533;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  border-radius: 1rem;
+  font-size: 10px;
+  left: 15px;
+  top: 8px;
+}
+header .top .topRight .d-none {
+  display: none;
 }
 header .search {
   display: flex;
