@@ -40,7 +40,12 @@ exports.getAllProducts = (req, res) => {
 exports.getOneProduct = (req, res) => {
     const id = req.params.id
     Product.findById(id)
-        
+        .populate('comments')
+        .populate({
+            path: 'comments',
+            populate: { path: 'userId', select: 'firstName lastName'}
+        })
+        .exec()
         .then(data => {
             if(!data) {
                 return res.status(404).json({ message: 'Could not find any product with this id.' })
