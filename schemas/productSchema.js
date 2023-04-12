@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
+const Comment = require('../schemas/commentSchema')
 
 
 const productSchema = mongoose.Schema({
     name:         { type: String, required: true },
     description:  { type: String, required: true },
     price:        { type: Number, required: true },
+    rating:       { type: Number, default: 0},
     imgURL:       { type: String, required: true },
     //Kolla den här, är det såhär vi vill göra? referera till en string eller vill vi referera till ett id?
-    category:       { type: [String] }
+    category:     { type: [String] },
+    comments:     [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}] 
 }, { timestamps: true })
 
 module.exports = mongoose.model('Product', productSchema)
