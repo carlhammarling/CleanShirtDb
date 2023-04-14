@@ -65,7 +65,22 @@
         transition: 200ms;
         &:hover {
             background-color: $darkGreen;
-        }
+        }        
+}
+
+
+@mixin bigAddBtn {
+    background-color: $green;
+    color:white;
+    font-weight: 500;
+    border: 0;
+    cursor: pointer;
+    transition: 200ms;
+    padding: .8em;
+    font-size: .8em;
+    &:hover {
+        background-color: $darkGreen;
+    }
 }
 
 @mixin form {
@@ -94,7 +109,7 @@
             height: 10rem;
         }  
     #send {
-        @include addBtn;
+        @include bigAddBtn;
         width: 100%;
     }
 }

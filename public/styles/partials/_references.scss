@@ -26,13 +26,38 @@
         }
 
         section {
-            padding: 10px;
-            border: 1px solid $medGrey;
-            margin-top: 10px;
             max-width: 600px;
+            & > * {
+                margin-block: .5rem
+            }
             @media (min-width: 800px) {
                 margin-top: 0;
             }
+        }
+
+        #selectToCart {
+
+            form {
+                @include form;
+                #size {
+                    padding: 0 0.3rem;
+                }
+                label {
+                    font-family: 'Abel', sans-serif; 
+                }
+
+            }
+            
+            button {
+                @include bigAddBtn;
+                width: 100%;
+            }
+
+        }
+        #reviewList {
+            padding: 10px;
+            border: 1px solid $medGrey;
+            
 
             .review {
                 margin-top: 1.2rem;

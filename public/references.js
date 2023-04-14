@@ -1,5 +1,7 @@
 const id = new URLSearchParams(window.location.search).get('id')
 const output = document.querySelector('#output')
+const selectForm = document.querySelector('#selectForm') 
+const addBtn = document.querySelector('#selectForm button')
 const likesQty = document.querySelector('#likesQty')
 
 const likes = () => {
@@ -24,6 +26,7 @@ const getLocalCart = () => {
 }
 getLocalCart()
 
+
 //Get products
 const getOneProduct = async () => {
     const res = await fetch('./api/products/' + id)
@@ -35,24 +38,22 @@ const getOneProduct = async () => {
 getOneProduct()
 
 const listProduct = (data) => {
-    output.innerHTML = ''
 
-    const img = document.createElement('img')
+    const img = document.querySelector('#productImg')
     img.setAttribute('src', data.imgURL)
-
-    const section = document.createElement('section')
-    const productInfo = document.createElement('div')
-    productInfo.className = 'productInfo'
     
-    const title = document.createElement('h1')
-    title.innerText = 'Reviews'
+    addBtn.id = data._id
 
+    const productInfo = document.querySelector('#productInfo')
+    
     const name = document.createElement('h2')
-    name.innerText = data.name
+    name.innerText = `${data.name.toUpperCase()} - ${data.description}`
 
+    const price = document.createElement('span')
+    price.className = 'price'
+    price.innerText = data.price
    
     //Likes
-    // const rating = data.rating;
     const ratingArray = [];
     data.comments.forEach(comment => {
         ratingArray.push(comment.rating)
@@ -62,20 +63,18 @@ const listProduct = (data) => {
 
     const solidStars = '<i class="fa-solid fa-star"></i>'.repeat(ratingSum)
     const regularStars = '<i class="fa-regular fa-star"></i>'.repeat(5-ratingSum)
+    console.log(ratingArray.length)
+    const commentCount = ratingArray.length
     const stars = document.createElement('h3')
-    stars.innerHTML = solidStars + regularStars
+    stars.innerHTML = solidStars + regularStars + ` (Out of ${commentCount} reviews)`
 
-    const description = document.createElement('p')
-    description.innerText = data.description
 
-    productInfo.append(title, name, stars, description)
+    productInfo.append(name, stars)
 
     //Build reviews
 
-    const reviewList = document.createElement('div')
-    reviewList.className = 'reviewList'
-
     data.comments.forEach(comment => {
+        const reviewList = document.querySelector('#reviewList')
 
         const review = document.createElement('div')
         review.className = 'review'
@@ -93,12 +92,25 @@ const listProduct = (data) => {
         review.append(userName, reviewText)
         reviewList.append(review)
     })
-
-
-    section.append(productInfo, reviewList)
-    output.append(img, section)
 }
 
+
+
+selectForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const size = document.querySelector('#size')
+
+    if(size.value === "") {
+        return
+    }
+
+    shoppingCart.push({
+        id: addBtn.id,
+        size: size.value
+    })
+    localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+    likes()
+})
 
 
 

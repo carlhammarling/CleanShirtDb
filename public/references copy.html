@@ -71,18 +71,18 @@
     <main class="references border">
 
         <article id="output">
-                <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
-                <section id="productInfo">
-
-                    <!-- CONTENT -->
-
+                <img src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
+                <section class="productInfo">
+                    <h2>CLEAN SHiRT - Blue with text.</h2>
+                    <span class="price">15€</span>
+                    <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
                 </section>
                 <section id="selectToCart">
-                    <form id="selectForm">
+                    <form id="size">
                         <div class="input-group">
                             <label class="label" for="size">Category:</label>
                             <select class="input" name="size" id="size">
-                                <option selected disabled value="">Choose a size</option>
+                                <option selected disabled value="size">Choose a size</option>
                                 <option value="XXL">XXL</option>
                                 <option value="XL">XL</option>
                                 <option value="L">L</option>
@@ -91,12 +91,12 @@
                                 <option value="XS">XS</option>
                             </select>
                         </div>
-                        <button>ADD TO CART <i class="fa-solid fa-cart-shopping"></i></button>
+                        <button class="btnShop" id="addToCart">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></button>
                     </form>
                 </section>          
-                <section id="reviewList">
+                <section class="reviews">
                     <h1>Reviews </h1>
-                    <!-- <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
+                    <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
 
                     <br>
                     <h4>Sean Connory <i class="fa-solid fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i></h4>
@@ -106,7 +106,7 @@
                     <h4>Bear Grylls <i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i></h4>
                     <p>I had a blast grappling with tigers in this outstanding t-shirt! I would definitly recommend it to anyone who isn't afraid
                         to get some dirt on their hands (or shirt), this one LASTS! Mindblowing quality!
-                    </p> -->
+                    </p>
                 </section>                      
         </article>
     </main>
