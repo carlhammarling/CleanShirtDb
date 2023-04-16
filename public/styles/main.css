@@ -36,6 +36,13 @@ h4 {
   color: #767676;
 }
 
+span.price {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #767676;
+}
+
 li {
   list-style: none;
   font-size: 14;
@@ -783,13 +790,13 @@ main.contact form #msg {
 }
 main.contact form #send {
   background-color: #2e8564;
-  padding: 0.3em;
   color: white;
   font-weight: 500;
-  font-size: 0.75em;
   border: 0;
   cursor: pointer;
   transition: 200ms;
+  padding: 0.8em;
+  font-size: 0.8em;
   width: 100%;
 }
 main.contact form #send:hover {
@@ -841,17 +848,78 @@ main.references article img {
   }
 }
 main.references article section {
-  padding: 10px;
-  border: 1px solid #767676;
-  margin-top: 10px;
   max-width: 600px;
+}
+main.references article section > * {
+  margin-block: 0.5rem;
 }
 @media (min-width: 800px) {
   main.references article section {
     margin-top: 0;
   }
 }
-main.references article section .review {
+main.references article #selectToCart form {
+  width: 100%;
+}
+main.references article #selectToCart form .label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+main.references article #selectToCart form .input, main.references article #selectToCart form select {
+  width: 100%;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0;
+  border: 1px solid #767676;
+  margin-bottom: 1rem;
+}
+main.references article #selectToCart form .input:focus, main.references article #selectToCart form select:focus {
+  outline: none;
+}
+main.references article #selectToCart form #msg {
+  width: 100%;
+  resize: none;
+  height: 10rem;
+}
+main.references article #selectToCart form #send {
+  background-color: #2e8564;
+  color: white;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  transition: 200ms;
+  padding: 0.8em;
+  font-size: 0.8em;
+  width: 100%;
+}
+main.references article #selectToCart form #send:hover {
+  background-color: #2a7a5b;
+}
+main.references article #selectToCart form #size {
+  padding: 0 0.3rem;
+}
+main.references article #selectToCart form label {
+  font-family: "Abel", sans-serif;
+}
+main.references article #selectToCart button {
+  background-color: #2e8564;
+  color: white;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  transition: 200ms;
+  padding: 0.8em;
+  font-size: 0.8em;
+  width: 100%;
+}
+main.references article #selectToCart button:hover {
+  background-color: #2a7a5b;
+}
+main.references article #reviewList {
+  padding: 10px;
+  border: 1px solid #767676;
+}
+main.references article #reviewList .review {
   margin-top: 1.2rem;
 }
 @media (min-width: 800px) {

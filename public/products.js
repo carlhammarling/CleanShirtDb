@@ -40,7 +40,7 @@ products();
 
 const buildProducts = () => {
     //Tömmer hårdkodat innehåll från produkt-diven.
-    // prodWrap.innerHTML = ''
+    prodWrap.innerHTML = ''
 
     productsArray.forEach(product => {
         const prodCard = document.createElement('div')
