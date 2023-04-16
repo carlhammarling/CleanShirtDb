@@ -6,14 +6,15 @@ const auth = require('../authorization/auth')
 //POST
 router.post('/', auth.verifyToken, auth.checkAdmin, productsModel.postProduct)
 
-//GET
+//GET - All products
 router.get('/', productsModel.getAllProducts)
+//Get one product by ID
 router.get('/:id', productsModel.getOneProduct)
 
-//PUT
+//PUT - Update product, only accessable for admin.
 router.put('/:id', auth.verifyToken, auth.checkAdmin, productsModel.putProduct)
 
-//DELETE
+//DELETE - Delete product, only accessable for admin.
 router.delete('/:id', auth.verifyToken, auth.checkAdmin, productsModel.deleteProduct)
 
 

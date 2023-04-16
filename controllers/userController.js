@@ -10,7 +10,7 @@ router.post('/login', userModel.loginUser)
 router.get('/', userModel.getAllUsers)
 router.get('/:id', userModel.getOneUser)
 
-//DELETE - bara tillgängligt för admin
+//DELETE - Delete a user - only accessable for admin.
 router.delete('/:id', verifyToken, checkAdmin ,userModel.deleteUser)
 
 
