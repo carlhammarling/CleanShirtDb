@@ -74,7 +74,9 @@ const buildProducts = () => {
         addBtn.addEventListener('click', (e) => {
             e.preventDefault()
 
-            shoppingCart.push(prodCard.id)
+            shoppingCart.push({
+                id: prodCard.id
+            })
             localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
             likes()
         })

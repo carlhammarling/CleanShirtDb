@@ -941,7 +941,7 @@ main.cart {
 main.cart article {
   line-height: 1.5;
 }
-main.cart article #cartList #cartItem {
+main.cart article #cartList .cartItem {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -950,13 +950,13 @@ main.cart article #cartList #cartItem {
   padding-block: 1rem;
   border-bottom: 1px solid #EDEDED;
 }
-main.cart article #cartList #cartItem img {
+main.cart article #cartList .cartItem img {
   width: 120px;
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-main.cart article #cartList #cartItem .itemRight {
+main.cart article #cartList .cartItem .itemRight {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

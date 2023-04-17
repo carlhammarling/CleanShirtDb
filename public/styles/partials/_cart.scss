@@ -8,7 +8,7 @@
         #cartList {
             
             
-            #cartItem {
+            .cartItem {
                 @include flex(row, flex-start, flex-start);
                 gap: 15px;
                 padding-block: 1rem;
