@@ -1,0 +1,80 @@
+@mixin cart {
+    
+    margin: 0 10px;
+        article {
+        display: grid;
+        justify-content: center;
+        margin-bottom: 10px;
+        line-height: 1.5;
+
+        @media (min-width: 630px) {
+            margin-bottom: 20px;
+        }
+        
+        img {
+            width: 100%;
+            max-width: 600px;
+            object-fit: cover;
+            @media (min-width: 800px) {
+                object-fit: cover;
+                height: 100%;
+            }
+            
+        }
+
+        section {
+            max-width: 600px;
+            & > * {
+                margin-block: .5rem
+            }
+            @media (min-width: 800px) {
+                margin-top: 0;
+            }
+        }
+
+        #checkout {
+
+            .priceSum {
+                @include flex(row, space-between, center)
+            }
+            .priceSum.total {
+
+                border-top: 1px solid $grey;
+                padding-top: .5rem;
+                p {
+                    color: black;
+                    font-weight: 600;
+
+                }
+            }
+
+            p {
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+                font-weight: 400;
+                color: $medGrey;
+            }
+            
+            button {
+                @include bigAddBtn;
+                width: 100%;
+            }
+
+        }
+        #cartItems {
+            padding: 10px;
+            border: 1px solid $medGrey;
+            margin-block: 0.5rem;
+
+            .review {
+                margin-top: 1.2rem;
+            }
+        }
+        @media (min-width: 800px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 0 20px;
+        }
+    }    
+}

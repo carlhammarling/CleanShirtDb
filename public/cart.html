@@ -46,13 +46,13 @@
             </div>
             <ul class="topRight">
                 <li id="heart">
-                    <a aria-label="Saved items" href="./cart.html">
+                    <a aria-label="Saved items" href="./index.html">
                         <i class="fa-regular fa-heart"></i>
                     </a>
                     <span class="d-none" id="likesQty"></span>
                 </li>              
                 <li>
-                    <a aria-label="Shopping cart" href="./cart.html">
+                    <a aria-label="Shopping cart" href="./index.html">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
                 </li>
@@ -68,7 +68,7 @@
     </header>
 
     <!-- MAIN CONTENT  -->
-    <main class="references border">
+    <main class="cart border">
 
         <article id="output">
                 <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
@@ -77,26 +77,9 @@
                     <!-- CONTENT -->
 
                 </section>
-                <section id="selectToCart">
-                    <form id="selectForm">
-                        <div class="input-group">
-                            <label class="label" for="size">Category:</label>
-                            <select class="input" name="size" id="size">
-                                <option selected disabled value="">Choose a size</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XL">XL</option>
-                                <option value="L">L</option>
-                                <option value="M">M</option>
-                                <option value="S">S</option>
-                                <option value="XS">XS</option>
-                            </select>
-                        </div>
-                        <button>ADD TO CART <i class="fa-solid fa-cart-shopping"></i></button>
-                    </form>
-                </section>          
-                <section id="reviewList">
+                <section id="cartItems">
                     <h1>Reviews </h1>
-                    <!-- <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
+                    <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
 
                     <br>
                     <h4>Sean Connory <i class="fa-solid fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i></h4>
@@ -106,8 +89,27 @@
                     <h4>Bear Grylls <i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i></h4>
                     <p>I had a blast grappling with tigers in this outstanding t-shirt! I would definitly recommend it to anyone who isn't afraid
                         to get some dirt on their hands (or shirt), this one LASTS! Mindblowing quality!
-                    </p> -->
-                </section>                      
+                    </p>
+                </section>  
+                <section id="checkout">
+                    <h2>Total amount</h2>
+                    <div class="priceSum">
+                        <p>Sub-total</p>
+                        <p>24.00€</p>
+                    </div>
+                    <div class="priceSum">
+                        <p>Delivery</p>
+                        <p>5.00€</p>
+                    </div>
+                    <div class="priceSum total">
+                        <p>Total amount (incl. VAT)</p>
+                        <p>29.00€</p>
+                    </div>
+                         
+                    <button>GO TO CHECK OUT <i class="fa-solid fa-cart-shopping"></i></button>
+                    
+                </section>          
+                                    
         </article>
     </main>
 
