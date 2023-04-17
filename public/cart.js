@@ -10,24 +10,30 @@ const shoppingCart = JSON.parse(localStorageData)
 let cartArray = []
 
 //GET PRODUCTS
-const products = async (id) => {
+const products = async (id, size) => {
     const res = await fetch('./api/products/' + id);
     const data = await res.json()
 
+    data.size = size;
+    quantity = 1
     cartArray.push(data)
+    
 }
 
 //Väntar på att alla promises ska bli klara
 const fillCart = () => {
-    const promises = shoppingCart.map((product) => products(product.id));
-    return Promise.all(promises);
+    const promises = shoppingCart.map((product) => products(product.id, product.size));
+    return Promise.all(promises)
   };
 
 
 const listProducts = () => {
     fillCart()
     .then(() => {
-        console.log(cartArray)
+      sumCalculator()
+
+      //Tömmer innehåll
+      cartList.innerHTML = ''
         //HÄR BYGGER VI CONTENT
       cartArray.forEach(data => {
         const cartItem = document.createElement('div')
@@ -51,10 +57,10 @@ const listProducts = () => {
         price.innerText = 'Price: ' + data.price + '€'
 
         const size = document.createElement('p')
-        size.innerText = 'Size: '
+        size.innerText = 'Size: ' + data.size
 
         const qty = document.createElement('p')
-        qty.innerText = 'Quantity: '
+        qty.innerText = 'Quantity: ' + quantity
 
         const trash = document.createElement('i')
         trash.className = 'fa-solid fa-trash-can'
@@ -70,19 +76,23 @@ const listProducts = () => {
 listProducts()
 
 
-{/* <div id="cartItem">
-                    <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
-                    <div class="itemRight">
-                        <h3>CLEAN SHiRT </h3>
-                        <p>T-SHIRT - Clean T-shirt with print on chest made in our own factory.
-                        </p>
-                        <p id="price">Price: 15€</p>
-                        <p id="size">Size: L</p>
-                        <p id="qty">Quantity: 1</p>
-                     </div>
-                     <i class="fa-solid fa-trash-can"></i>
-                </div>  */}
+const sumCalculator = () => {
+    const subTotal = cartArray.reduce((acc, product) => {
+    return acc + product.price;
+  }, 0);
+    document.querySelector('#subTotal').innerText = subTotal + '.00€'
+    const deliveryCost = document.querySelector('#deliveryCost')
+   //If the order is at least 40€ delivery is free.
+   if(subTotal >= 40) {
+    deliveryCost.value = 0
+    }
+   else {
+     deliveryCost.value = 5
+    }
+  deliveryCost.innerText = deliveryCost.value + '.00€'
 
+  document.querySelector('#totalSum').innerText = subTotal + deliveryCost.value + '.00€'
+}
 
 
 
