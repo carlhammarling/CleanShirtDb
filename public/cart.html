@@ -71,28 +71,34 @@
     <main class="cart border">
 
         <article id="output">
-                <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
-                <section id="productInfo">
+            <h1>Shopping cart </h1>
 
-                    <!-- CONTENT -->
-
-                </section>
-                <section id="cartItems">
-                    <h1>Reviews </h1>
-                    <h3><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></h3>
-
-                    <br>
-                    <h4>Sean Connory <i class="fa-solid fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i><i class="fa-regular fa-star fa-sm"></i></h4>
-                    <p>Apparently this one doesn't highlight my features very well, I will keep to suit and tie. Will not buy again.
-                    </p>
-                    <br>
-                    <h4>Bear Grylls <i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i><i class="fa-solid fa-star fa-sm"></i></h4>
-                    <p>I had a blast grappling with tigers in this outstanding t-shirt! I would definitly recommend it to anyone who isn't afraid
-                        to get some dirt on their hands (or shirt), this one LASTS! Mindblowing quality!
-                    </p>
-                </section>  
+            <section id="cartList">
+                <div id="cartItem">
+                    <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
+                    <div class="itemRight">
+                        <h3>CLEAN SHiRT </h3>
+                        <p>T-SHIRT - Clean T-shirt with print on chest made in our own factory.
+                        </p>
+                        <p id="price">Price: 15€</p>
+                        <p id="size">Size: L</p>
+                        <p id="qty">Quantity: 1</p>
+                     </div>
+                     <i class="fa-solid fa-trash-can"></i>
+                </div>  
+                <div id="cartItem">
+                    <img id="productImg" src="./styles/images/pexels-spencer-selover-428311.jpg" alt="Shirt">      
+                    <div class="itemRight">
+                        <h4>Sean Connory</h4>
+                        <p>Apparently this one doesn't highlight my features very well, I will keep to suit and tie. Will not buy again.
+                        </p>
+                        <p>Size: L</p>
+                        <p>Qty: 2</p>
+                    </div>
+                </div>  
+            </section>
                 <section id="checkout">
-                    <h2>Total amount</h2>
+                    <h2>Total</h2>
                     <div class="priceSum">
                         <p>Sub-total</p>
                         <p>24.00€</p>
@@ -109,8 +115,8 @@
                     <button>GO TO CHECK OUT <i class="fa-solid fa-cart-shopping"></i></button>
                     
                 </section>          
+            </article>
                                     
-        </article>
     </main>
 
 
@@ -143,7 +149,7 @@
         </div>
 
     </footer>
-    <script src="./references.js"></script>
+    <!-- <script src="./references.js"></script> -->
     <script src="./scriptmeny.js"></script>
 </body>
 </html>
